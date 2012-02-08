@@ -19,7 +19,6 @@
 
   This library was inspired from https://github.com/alemansec/opensimWebAssets made by Anthony Le Mansec <a.lm@free.fr>
  */
-
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class GetAsset extends CI_Controller {
@@ -48,6 +47,25 @@ class GetAsset extends CI_Controller {
     // echo $this->ci_osgetasset->get_asset('00000000-0000-1111-9999-000000000001', 50);
     // or (to get a full image as png
     // echo $this->ci_osgetasset->get_asset('00000000-0000-1111-9999-000000000001', 'full', 'png');
+  }
+
+  function image() {
+
+    // assuming that we are using an url like :
+    // /getasset/image/50/00000000-0000-1111-9999-000000000001.jpeg
+
+    // get the elements
+    $this->load->helper('url');
+    $segments = $this->uri->segment_array();
+    $width = $segments[3];
+    $details = pathinfo($segments[4]);
+    $uuid = $details['filename'];
+    $format = $details['extension'];
+
+    // get the image
+    $this->load->library('ci_osgetasset');
+    Header("Content-type: image/". $format);
+    echo $this->ci_osgetasset->get_asset($uuid, $width, $format);
   }
 
 }
