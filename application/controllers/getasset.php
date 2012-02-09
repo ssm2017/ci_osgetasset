@@ -55,7 +55,6 @@ class GetAsset extends CI_Controller {
     // /getasset/image/50/00000000-0000-1111-9999-000000000001.jpeg
 
     // get the elements
-    $this->load->helper('url');
     $segments = $this->uri->segment_array();
     $width = $segments[3];
     $details = pathinfo($segments[4]);
