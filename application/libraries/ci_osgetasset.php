@@ -24,7 +24,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Defines the uuid zero
  */
-define('UUID_ZERO', '00000000-0000-0000-0000-000000000000');
+if (!defined('UUID_ZERO')) define('UUID_ZERO', '00000000-0000-0000-0000-000000000000');
 
 /**
  * The main class for the lib

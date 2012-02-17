@@ -49,6 +49,13 @@ class GetAsset extends CI_Controller {
     // echo $this->ci_osgetasset->get_asset('00000000-0000-1111-9999-000000000001', 'full', 'png');
   }
 
+  function webasset() {
+    $uuid = $this->uri->segment(3);
+    $this->load->library('ci_osgetasset');
+    Header("Content-type: image/jpeg");
+    echo $this->ci_osgetasset->get_asset($uuid, 'full', 'jpeg');
+  }
+
   function image() {
 
     // assuming that we are using an url like :
